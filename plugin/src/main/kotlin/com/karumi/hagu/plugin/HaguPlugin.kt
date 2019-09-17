@@ -14,7 +14,7 @@ class HaguPlugin : Plugin<Project> {
       BuildHagu.NAME,
       BuildHagu::class.java
     )
-    val buildTask = project.tasks.findByName("build")
+    val buildTask = project.tasks.findByName("compileKotlin")
     buildTask?.dependsOn(hagoBuildTask)
   }
 }

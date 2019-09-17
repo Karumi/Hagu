@@ -8,12 +8,12 @@ class MainTest {
 
   @Test
   fun `hagu configuration file should contains string key`() {
-    assertEquals("api_key", HaguConfig.API_KEY)
+    assertEquals("some_api_key", HaguConfig.API_KEY)
   }
 
   @Test
   fun `hagu configuration file should contains number key`() {
-    assertEquals("api_key", HaguConfig.NUMBER_KEY)
+    assertEquals(11, HaguConfig.NUMBER_KEY)
   }
 
 }

@@ -1,4 +1,4 @@
-group 'com.karumi.hagu'
+group 'com.github.karumi'
 version '0.1.0'
 
 buildscript {
@@ -62,6 +62,10 @@ install {
     repositories {
         mavenDeployer {
             repository(url: uri('../repo'))
+
+            pom.groupId = GROUP
+            pom.artifactId = POM_ARTIFACT_ID
+            pom.version = VERSION_NAME
         }
     }
 }

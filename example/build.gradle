@@ -6,7 +6,7 @@ buildscript {
 
     repositories {
         mavenCentral()
-        maven { url 'https://jitpack.io' }
+        maven { url uri("../repo") }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"

@@ -10,6 +10,7 @@ import org.junit.Test
 class KotlinConfigGeneratorTest {
 
   private val buildDir = File("build/test")
+  private val kotlinConfigGenerator = KotlinConfigGenerator(buildDir)
 
   @BeforeTest
   fun removeDirectories() {
@@ -18,8 +19,6 @@ class KotlinConfigGeneratorTest {
 
   @Test
   fun `generate kotlin configuration object with properties`() {
-    val kotlinConfigGenerator = KotlinConfigGenerator(buildDir)
-
     val properties = Properties()
     properties["property_number"] = "1"
     properties["property_string"] = "\"Hello world\""
@@ -31,8 +30,6 @@ class KotlinConfigGeneratorTest {
 
   @Test
   fun `should create directory if not exist`() {
-    val kotlinConfigGenerator = KotlinConfigGenerator(buildDir)
-
     kotlinConfigGenerator.generateConfig(Properties())
 
     assertTrue(kotlinConfigGenerator.generatedSourceOutput.exists())
@@ -40,11 +37,16 @@ class KotlinConfigGeneratorTest {
 
   @Test
   fun `should create a hagu config file`() {
-    val kotlinConfigGenerator = KotlinConfigGenerator(buildDir)
-
     kotlinConfigGenerator.generateConfig(Properties())
 
     assertTrue(kotlinConfigGenerator.haguConfigFile.exists())
+  }
+
+  @Test
+  fun `should create an empty object if there aren't properties`() {
+    kotlinConfigGenerator.generateConfig(Properties())
+
+    readFile(kotlinConfigGenerator.haguConfigFile).matchWithSnapshot()
   }
 
   private fun readFile(file: File): String = file.readText()
