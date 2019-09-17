@@ -1,0 +1,13 @@
+build/
+.idea/
+.gradle/
+local.properties
+*.iml
+core/out
+repo
+.project
+.settings
+
+**/out
+**/build
+.gradletasknamecache
