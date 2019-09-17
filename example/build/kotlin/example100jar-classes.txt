@@ -1,1 +1,0 @@
-/Users/toni/Documents/work/outreach/hagu/example/build/classes/kotlin/main/com/karumi/example/MainKt.class

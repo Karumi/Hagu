@@ -1,0 +1,10 @@
+language: java
+
+jdk:
+  - oraclejdk11
+
+script:
+  - ./gradlew ktlint test install --info
+  - ./gradlew install
+  - cd example
+  - ./gradlew test --info
