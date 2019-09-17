@@ -1,0 +1,8 @@
+package com.karumi.hagu.generated
+
+object HaguConfig {
+    
+	val const PROPERTY_STRING = "Hello world"
+	val const PROPERTY_NUMBER = 1
+    
+}  

@@ -37,7 +37,7 @@ class KotlinConfigGenerator(
 
     val propertiesVariables = properties.toList().fold("") { accumulation, property ->
       val key = property.first.toString().toUpperCase()
-      accumulation + "\n\tval $key = ${property.second}"
+      accumulation + "\n\tval const $key = ${property.second}"
     }
 
     haguConfigFile.writeText(getConfigContent(propertiesVariables))
