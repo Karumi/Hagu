@@ -38,7 +38,9 @@ number_key = 11
 First you must build your project, `./gradlew build`, it generates the HaguConfig kotlin object with the property constants you added in `gradle.properties`.
 
 ```
-HttpClient(HaguConfig.API_KEY)
+import com.karumi.hagu.generated.HaguConfig
+
+println(HaguConfig.API_KEY)  //output: some_api_key
 ```
 
 License
