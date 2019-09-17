@@ -13,7 +13,7 @@ buildscript {
     }
     
     dependencies {       
-        classpath 'com.karumi.hagu:plugin:0.1.1'
+        classpath 'com.karumi.hagu:plugin:0.1.0'
     }
 }
 
