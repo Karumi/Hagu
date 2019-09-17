@@ -86,7 +86,7 @@
             checkBox.checked = false;
 
             removeClass(label, "hidden");
-         }
+        }
     }
 
     function switchTab() {
@@ -187,8 +187,8 @@
 
     // Entry point.
 
-    window.onload = function() {
+    window.onload = function () {
         initTabs();
         initControls();
     };
-} (window, window.document));
+}(window, window.document));
