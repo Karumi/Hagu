@@ -1,5 +1,5 @@
 group 'com.karumi.hagu'
-version '1.0.0'
+version '0.1'
 
 buildscript {
     ext.kotlin_version = '1.3.50'
@@ -10,7 +10,7 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.karumi.hagu:plugin:1.0.0'
+        classpath 'com.karumi.hagu:plugin:0.1'
     }
 }
 
