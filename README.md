@@ -12,15 +12,15 @@ Add our Gradle Plugin to your build.gradle file:
 ```
 buildscript {
     repositories {
-        maven { url 'https://jitpack.io' }
+        mavenCentral()
     }
     
     dependencies {       
-        classpath 'com.github.karumi:hagu:0.1.1'
+        classpath 'com.karumi.hagu:hagu:0.1.1'
     }
 }
 
-apply plugin: 'com.karumi.hagu'
+apply plugin: 'hagu'
 
 kotlin.sourceSets["main"].kotlin.srcDirs("$buildDir/generated/kotlin/config")
 ``` 

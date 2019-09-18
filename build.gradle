@@ -9,3 +9,8 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
+
+allprojects {
+    group 'com.karumi.hagu'
+    version '0.1.1'
+}
