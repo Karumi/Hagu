@@ -55,32 +55,12 @@ task ktlintFormat(type: JavaExec, group: "formatting") {
 apply plugin: 'maven'
 apply plugin: 'signing'
 
-install {
-    repositories {
-        mavenDeployer {
-            repository(url: uri('../repo'))
-
-            pom.groupId = GROUP
-            pom.artifactId = POM_ARTIFACT_ID
-            pom.version = VERSION_NAME
-        }
-    }
-}
-
 def isReleaseBuild() {
-    return VERSION_NAME.contains("SNAPSHOT") == false
-}
-
-def getRepositoryUsername() {
-    return hasProperty('NEXUS_USERNAME') ? NEXUS_USERNAME : ""
-}
-
-def getRepositoryPassword() {
-    return hasProperty('NEXUS_PASSWORD') ? NEXUS_PASSWORD : ""
+    return !VERSION_NAME.contains("SNAPSHOT")
 }
 
 signing {
-    required { isReleaseBuild() && gradle.taskGraph.hasTask("uploadArchives") }
+    required { isReleaseBuild() && gradle.taskGraph.hasTask("install") }
     sign configurations.archives
 }
 
@@ -98,15 +78,17 @@ artifacts {
     archives javadocJar, sourcesJar
 }
 
-uploadArchives {
+install {
     repositories {
         mavenDeployer {
             // POM signature
             beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-            // Target repository
-            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                authentication(userName: getRepositoryUsername(), password: getRepositoryPassword())
-            }
+
+            repository(url: uri('../repo'))
+
+            pom.groupId = GROUP
+            pom.artifactId = POM_ARTIFACT_ID
+            pom.version = VERSION_NAME
 
             pom.groupId = GROUP
             pom.artifactId = POM_ARTIFACT_ID
@@ -139,20 +121,6 @@ uploadArchives {
                     }
                 }
             }
-        }
-    }
-}
-
-sourceSets {
-    test {
-        output.resourcesDir = "build/classes/test/resources"
-        groovy {
-            srcDirs = ['test/groovy']
-        }
-    }
-    main {
-        groovy {
-            srcDirs = ['src/main/groovy']
         }
     }
 }
