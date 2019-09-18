@@ -1,6 +1,6 @@
 package com.karumi.example
 
-import com.karumi.hagu.generated.HaguConfig
+import com.github.karumi.hagu.generated.HaguConfig
 import junit.framework.TestCase.assertEquals
 import org.junit.Test
 

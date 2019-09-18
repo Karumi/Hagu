@@ -1,4 +1,4 @@
-package com.karumi.hagu.plugin
+package com.github.karumi.hagu.plugin
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project

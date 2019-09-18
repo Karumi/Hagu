@@ -1,4 +1,4 @@
-package com.karumi.hagu.plugin
+package com.github.karumi.hagu.plugin
 
 import java.io.File
 import java.util.Properties
@@ -6,7 +6,7 @@ import kotlin.Comparator
 import kotlin.String
 
 val configurationFile = """
-    package com.karumi.hagu.generated
+    package com.github.karumi.hagu.generated
     
     object HaguConfig {
         &properties

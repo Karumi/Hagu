@@ -16,11 +16,11 @@ buildscript {
     }
     
     dependencies {       
-        classpath 'com.github.karumi:hagu:0.1.1'
+        classpath 'com.github.karumi:hagu:0.1.2'
     }
 }
 
-apply plugin: 'com.karumi.hagu'
+apply plugin: 'com.github.karumi.hagu'
 
 kotlin.sourceSets["main"].kotlin.srcDirs("$buildDir/generated/kotlin/config")
 ``` 
@@ -41,7 +41,7 @@ number_key = 11
 First you must build your project, `./gradlew build`, it generates the HaguConfig kotlin object with the property constants you added in `gradle.properties`.
 
 ```
-import com.karumi.hagu.generated.HaguConfig
+import com.github.karumi.hagu.generated.HaguConfig
 
 println(HaguConfig.API_KEY)  //output: some_api_key
 ```

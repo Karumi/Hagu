@@ -1,4 +1,4 @@
-package com.karumi.hagu.plugin
+package com.github.karumi.hagu.plugin
 
 import java.io.FileInputStream
 import java.util.Properties
