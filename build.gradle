@@ -11,6 +11,6 @@ buildscript {
 }
 
 allprojects {
-    group 'com.github.karumi'
+    group 'com.github.karumi.hagu'
     version = "0.1.2"
 }
