@@ -1,6 +1,5 @@
 <p align="center"><img src ="./pictures/hagu.png" /></p>
 
-[![](https://jitpack.io/v/karumi/hagu.svg)](https://jitpack.io/#karumi/hagu)
 [![Build Status](https://travis-ci.com/Karumi/Hagu.svg?branch=master)](https://travis-ci.com/Karumi/Hagu)
 
 Gradle plugin to enable build configuration secrets for Kotlin, Kotlin-Native / Multiplatform.
