@@ -20,7 +20,7 @@ buildscript {
     }
 }
 
-apply plugin: 'com.github.karumi.hagu'
+apply plugin: 'hagu'
 
 kotlin.sourceSets["main"].kotlin.srcDirs("$buildDir/generated/kotlin/config")
 ``` 

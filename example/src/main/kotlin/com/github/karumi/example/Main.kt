@@ -1,4 +1,4 @@
-package com.karumi.example
+package com.github.karumi.example
 
 import com.github.karumi.hagu.generated.HaguConfig
 
