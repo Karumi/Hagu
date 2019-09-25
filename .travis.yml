@@ -21,7 +21,6 @@ android:
 
 script:
   - ./gradlew ktlint test install --info
-  - ./gradlew install
   - cd examples/kotlin-example
   - ./gradlew test --info
   - cd ../multiplatform-example

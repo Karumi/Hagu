@@ -7,12 +7,12 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.karumi.hagu:hagu:0.1.3-SNAPSHOT'
+        classpath 'com.karumi.hagu:gradle-plugin:0.1.3-SNAPSHOT'
     }
 }
 
 apply plugin: 'kotlin'
-apply plugin: 'hagu'
+apply plugin: 'com.karumi.hagu'
 
 sourceCompatibility = 1.8
 
