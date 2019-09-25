@@ -1,15 +1,11 @@
 package com.karumi.hagu.plugin.source
 
-import com.android.build.gradle.api.AndroidSourceSet
 import org.gradle.api.file.SourceDirectorySet
 import org.gradle.api.internal.HasConvention
 import org.gradle.api.tasks.SourceSet
 import org.jetbrains.kotlin.gradle.plugin.KOTLIN_DSL_NAME
 import org.jetbrains.kotlin.gradle.plugin.KOTLIN_JS_DSL_NAME
 import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet
-
-internal val AndroidSourceSet.kotlin: SourceDirectorySet?
-  get() = kotlinSourceSet
 
 internal val SourceSet.kotlin: SourceDirectorySet?
   get() = kotlinSourceSet
