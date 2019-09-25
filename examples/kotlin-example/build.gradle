@@ -1,0 +1,35 @@
+buildscript {
+    ext.kotlin_version = '1.3.50'
+
+    repositories {
+        mavenCentral()
+        maven { url uri("../../repo") }
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.karumi.hagu:hagu:0.1.1'
+    }
+}
+
+apply plugin: 'kotlin'
+apply plugin: 'hagu'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation group: 'junit', name: 'junit', version: '4.12'
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+
+kotlin.sourceSets["main"].kotlin.srcDirs("$buildDir/generated/kotlin/config")

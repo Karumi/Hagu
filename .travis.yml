@@ -6,5 +6,7 @@ jdk:
 script:
   - ./gradlew ktlint test install --info
   - ./gradlew install
-  - cd example
+  - cd examples/kotlin-example
+  - ./gradlew test --info
+  - cd examples/multiplatform-example
   - ./gradlew test --info
