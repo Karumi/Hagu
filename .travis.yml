@@ -8,5 +8,5 @@ script:
   - ./gradlew install
   - cd examples/kotlin-example
   - ./gradlew test --info
-  - cd examples/multiplatform-example
+  - cd ../multiplatform-example
   - ./gradlew test --info

@@ -15,7 +15,7 @@ buildscript {
     }
     
     dependencies {       
-        classpath 'com.karumi.hagu:hagu:0.1.1'
+        classpath 'com.karumi.hagu:hagu:0.1.3-SNAPSHOT'
     }
 }
 
