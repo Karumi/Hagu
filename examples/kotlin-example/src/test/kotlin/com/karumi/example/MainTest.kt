@@ -15,5 +15,4 @@ class MainTest {
   fun `hagu configuration file should contains number key`() {
     assertEquals(11, HaguConfig.NUMBER_KEY)
   }
-
 }

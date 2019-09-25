@@ -1,11 +1,11 @@
 package com.karumi.hagu.plugin
 
 import com.karumi.kotlinsnapshot.matchWithSnapshot
+import java.io.File
+import java.util.Properties
 import junit.framework.TestCase.assertTrue
 import org.gradle.internal.impldep.org.testng.annotations.BeforeTest
 import org.junit.Test
-import java.io.File
-import java.util.Properties
 
 class KotlinConfigGeneratorTest {
 

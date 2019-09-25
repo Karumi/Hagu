@@ -1,10 +1,10 @@
 package com.karumi.hagu.plugin
 
 import com.karumi.hagu.plugin.source.sources
+import java.io.File
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType
-import java.io.File
 
 class HaguPlugin : Plugin<Project> {
 
@@ -19,8 +19,8 @@ class HaguPlugin : Plugin<Project> {
   private fun addTasks(project: Project) {
     val outputDirectory = File(project.buildDir, HAGU_GENERATED_SOURCE_FOLDER)
     val task = project.tasks.register(
-      BuildHaguTask.NAME,
-      BuildHaguTask::class.java
+      HaguTask.NAME,
+      HaguTask::class.java
     ) {
       it.generatedSourceOutput = outputDirectory
     }
@@ -31,7 +31,6 @@ class HaguPlugin : Plugin<Project> {
     common?.sourceDirectorySet?.srcDir(outputDirectory.toRelativeString(project.projectDir))
 
     sources.forEach { source ->
-      // Add the source dependency on the generated code.
       if (common == null) {
         source.sourceDirectorySet.srcDir(outputDirectory.toRelativeString(project.projectDir))
       }

@@ -1,17 +1,17 @@
 package com.karumi.hagu.plugin
 
+import java.io.File
+import java.io.FileInputStream
+import java.util.Properties
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.CacheableTask
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.PathSensitive
 import org.gradle.api.tasks.PathSensitivity
 import org.gradle.api.tasks.TaskAction
-import java.io.File
-import java.io.FileInputStream
-import java.util.Properties
 
 @CacheableTask
-open class BuildHaguTask : DefaultTask() {
+open class HaguTask : DefaultTask() {
 
   companion object {
     const val NAME = "buildHagu"
