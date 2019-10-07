@@ -8,7 +8,7 @@ Gradle plugin to enable build configuration secrets for Kotlin, Kotlin-Native / 
 
 Add our Gradle Plugin to your build.gradle file:
 
-```
+```groovy
 buildscript {
     repositories {
         mavenCentral()
@@ -30,7 +30,7 @@ kotlin.sourceSets["main"].kotlin.srcDirs("$buildDir/generated/kotlin/config")
 
 Use `gradle.properties` file to add the key-value configuration you want like this:
 
-```
+```groovy
 api_key = "some_api_key"
 number_key = 11
 ```
@@ -39,7 +39,7 @@ number_key = 11
 
 First you must build your project, `./gradlew build`, it generates the HaguConfig kotlin object with the property constants you added in `gradle.properties`.
 
-```
+```kotlin
 import com.karumi.hagu.generated.HaguConfig
 
 println(HaguConfig.API_KEY)  //output: some_api_key
