@@ -5,7 +5,9 @@ import org.gradle.api.Project
 import org.gradle.api.file.SourceDirectorySet
 import org.gradle.api.tasks.SourceSetContainer
 import org.gradle.api.tasks.TaskProvider
+import org.jetbrains.kotlin.gradle.dsl.KotlinCommonOptions
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
+import org.jetbrains.kotlin.gradle.plugin.KotlinCompilation
 import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinJvmAndroidCompilation
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
@@ -30,26 +32,29 @@ internal fun sources(project: Project): List<Source> {
 
 private fun KotlinMultiplatformExtension.sources(): List<Source> =
   targets.flatMap { target ->
-    return@flatMap target.compilations.mapNotNull { compilation ->
-      if (compilation.name.endsWith(suffix = "Test", ignoreCase = true)) {
-        return@mapNotNull null
-      }
-      Source(
-        type = target.platformType,
-        konanTarget = (target as? KotlinNativeTarget)?.konanTarget,
-        name = "${target.name}${compilation.name.capitalize()}",
-        variantName = (compilation as? KotlinJvmAndroidCompilation)?.name,
-        sourceDirectorySet = compilation.defaultSourceSet.kotlin,
-        sourceSets = compilation.allKotlinSourceSets.map { it.name },
-        registerTaskDependency = { task ->
-          (target as? KotlinNativeTarget)?.binaries?.forEach {
-            it.linkTask.dependsOn(task)
-          }
-          compilation.compileKotlinTask.dependsOn(task)
-        }
-      )
-    }
+    target.compilations.mapNotNull { it.source() }
   }
+
+private fun KotlinCompilation<KotlinCommonOptions>.source(): Source? {
+  if (name.endsWith(suffix = "Test", ignoreCase = true)) {
+     return null
+  }
+
+  return Source(
+    type = target.platformType,
+    konanTarget = (target as? KotlinNativeTarget)?.konanTarget,
+    name = "${target.name}${name.capitalize()}",
+    variantName = (this as? KotlinJvmAndroidCompilation)?.name,
+    sourceDirectorySet = defaultSourceSet.kotlin,
+    sourceSets = allKotlinSourceSets.map { it.name },
+    registerTaskDependency = { task ->
+      (target as? KotlinNativeTarget)?.binaries?.forEach {
+        it.linkTask.dependsOn(task)
+      }
+      compileKotlinTask.dependsOn(task)
+    }
+  )
+}
 
 internal data class Source(
   val type: KotlinPlatformType,
