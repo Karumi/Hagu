@@ -37,7 +37,7 @@ private fun KotlinMultiplatformExtension.sources(): List<Source> =
 
 private fun KotlinCompilation<KotlinCommonOptions>.source(): Source? {
   if (name.endsWith(suffix = "Test", ignoreCase = true)) {
-     return null
+    return null
   }
 
   return Source(
