@@ -1,0 +1,77 @@
+apply plugin: 'com.android.library'
+apply plugin: "kotlin-multiplatform"
+apply plugin: "com.karumi.hagu"
+
+group 'com.karumi.hagu.multiplatform'
+
+android {
+  defaultConfig {
+    compileSdkVersion 28
+  }
+  packagingOptions {
+    exclude "META-INF/*"
+  }
+}
+
+kotlin {
+  // This is for iPhone emulator
+  // Switch here to iosArm64 (or iosArm32) to build library for iPhone device
+  iosX64("ios") {
+    binaries {
+      framework("shared")
+    }
+  }
+  android()
+
+  sourceSets {
+    commonMain {
+      dependencies {
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-common:$kotlin_version"
+      }
+    }
+    commonTest {
+      dependencies {
+        implementation 'org.jetbrains.kotlin:kotlin-test-common'
+        implementation 'org.jetbrains.kotlin:kotlin-test-annotations-common'
+      }
+    }
+    androidMain {
+      dependencies {
+        implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+      }
+    }
+    androidTest {
+      dependencies {
+        implementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+      }
+    }
+    iosMain {
+      dependencies {}
+    }
+  }
+}
+
+//This is to let Intellij import generated code
+kotlin.sourceSets["commonMain"].kotlin.srcDirs("$buildDir/generated/kotlin/config")
+
+// This task attaches native framework built from ios module to Xcode project
+// (see iosApp directory). Don't run this task directly,
+// Xcode runs this task itself during its build process.
+// Before opening the project from iosApp directory in Xcode,
+// make sure all Gradle infrastructure exists (gradle.wrapper, gradlew).
+task copyFramework {
+  final File frameworkDir = new File(buildDir, "xcode-frameworks")
+  def buildType = project.findProperty('kotlin.build.type') ?: 'DEBUG'
+  def framework = kotlin.targets.ios.compilations.main.target.binaries.findFramework("shared", buildType)
+  dependsOn framework.linkTask
+
+  doLast {
+    def srcFile = framework.outputFile
+    copy {
+      from srcFile.parent
+      into frameworkDir
+      include 'Shared.framework/**'
+      include 'Shared.framework.dSYM'
+    }
+  }
+}

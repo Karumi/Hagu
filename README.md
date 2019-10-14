@@ -15,11 +15,11 @@ buildscript {
     }
     
     dependencies {       
-        classpath 'com.karumi.hagu:hagu:0.1.1'
+        classpath 'com.karumi.hagu:hagu:0.1.3-SNAPSHOT'
     }
 }
 
-apply plugin: 'hagu'
+apply plugin: 'com.karumi.hagu'
 
 kotlin.sourceSets["main"].kotlin.srcDirs("$buildDir/generated/kotlin/config")
 ``` 

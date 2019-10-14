@@ -2,8 +2,6 @@ package com.karumi.hagu.plugin
 
 import java.io.File
 import java.util.Properties
-import kotlin.Comparator
-import kotlin.String
 
 val configurationFile = """
     package com.karumi.hagu.generated
@@ -16,19 +14,14 @@ val configurationFile = """
 """.trimIndent()
 
 class KotlinConfigGenerator(
-  buildConfigDir: File
+  val generatedSourceOutput: File
 ) {
 
   companion object {
     private const val HAGU_CONFIG_FILE_NAME = "HaguConfig.kt"
-    private const val HAGU_GENERATED_SOURCE_FOLDER = "generated/kotlin/config"
     private const val PROPERTIES = "&properties"
   }
 
-  val generatedSourceOutput = File(
-    buildConfigDir,
-    HAGU_GENERATED_SOURCE_FOLDER
-  )
   val haguConfigFile = File(
     generatedSourceOutput,
     HAGU_CONFIG_FILE_NAME

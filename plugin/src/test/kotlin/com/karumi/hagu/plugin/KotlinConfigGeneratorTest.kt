@@ -9,7 +9,7 @@ import org.junit.Test
 
 class KotlinConfigGeneratorTest {
 
-  private val buildDir = File("build/test")
+  private val buildDir = File("build/test/generated")
   private val kotlinConfigGenerator = KotlinConfigGenerator(buildDir)
 
   @BeforeTest
