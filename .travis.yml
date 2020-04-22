@@ -18,7 +18,7 @@ android:
     - 'google-gdk-license-.+'
 
 script:
-  - ./gradlew ktlint test install --info
+  - ./gradlew :plugin:test ktlint install --info
   - cd examples/kotlin-example
   - ./gradlew clean test --tests com.karumi.example.DebugConfigFromExtensionTest --info
   - ./gradlew clean test --tests com.karumi.example.CIProfileTest -Pprofile=ci --info
