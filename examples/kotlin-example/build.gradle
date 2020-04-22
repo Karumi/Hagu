@@ -16,6 +16,10 @@ apply plugin: 'com.karumi.hagu'
 
 sourceCompatibility = 1.8
 
+hagu {
+  defaultProfile = "debug"
+}
+
 repositories {
     mavenCentral()
 }

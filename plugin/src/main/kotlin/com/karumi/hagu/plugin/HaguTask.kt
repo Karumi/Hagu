@@ -1,5 +1,6 @@
 package com.karumi.hagu.plugin
 
+import com.karumi.hagu.plugin.HaguExtension.Companion.DEFAULT_PROFILE_NAME
 import java.io.File
 import java.io.FileInputStream
 import java.util.Properties
@@ -15,7 +16,6 @@ open class HaguTask : DefaultTask() {
 
   companion object {
     const val NAME = "buildHagu"
-    private const val PROPERTIES_CONFIG = "gradle.properties"
   }
 
   init {
@@ -26,10 +26,13 @@ open class HaguTask : DefaultTask() {
   @get:OutputDirectory
   @get:PathSensitive(PathSensitivity.RELATIVE)
   var generatedSourceOutput: File? = null
+  var profile: String = DEFAULT_PROFILE_NAME
 
   @TaskAction
   fun build() {
     generatedSourceOutput?.run {
+      print("Building Hagu configuration for profile: $profile.properties")
+
       deleteRecursively()
       val kotlinConfigGenerator = KotlinConfigGenerator(this)
       kotlinConfigGenerator.generateConfig(getProperties())
@@ -37,7 +40,7 @@ open class HaguTask : DefaultTask() {
   }
 
   private fun getProperties(): Properties {
-    val localPropertiesFile = project.file(PROPERTIES_CONFIG)
+    val localPropertiesFile = project.file("$profile.properties")
     val localProperties = Properties()
     localProperties.load(FileInputStream(localPropertiesFile))
     return localProperties
