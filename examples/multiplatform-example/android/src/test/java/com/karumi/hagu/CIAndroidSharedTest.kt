@@ -5,15 +5,15 @@ import com.karumi.hagu.generated.HaguConfig
 import org.junit.Test
 import junit.framework.TestCase.assertEquals
 
-class AndroidSharedTest {
+class CIAndroidSharedTest {
 
   @Test
   fun `hagu configuration file should be accessible from android`() {
-    assertEquals("some_api_k", HaguConfig.API_KEY)
+    assertEquals("ci_api_key", HaguConfig.API_KEY)
   }
 
   @Test
   fun `hagu configuration file should contains number key`() {
-    assertEquals(11, HaguConfig.NUMBER_KEY)
+    assertEquals(12, HaguConfig.NUMBER_KEY)
   }
 }

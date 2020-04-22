@@ -20,7 +20,9 @@ android:
 script:
   - ./gradlew ktlint test install --info
   - cd examples/kotlin-example
-  - ./gradlew test --tests com.karumi.example.DebugConfigFromExtensionTest --info
-  - ./gradlew test --tests com.karumi.example.CIProfileTest -Pprofile=ci --info
+  - ./gradlew clean test --tests com.karumi.example.DebugConfigFromExtensionTest --info
+  - ./gradlew clean test --tests com.karumi.example.CIProfileTest -Pprofile=ci --info
   - cd ../multiplatform-example
-  - ./gradlew test --info
+  - ./gradlew clean :android:testDebugUnitTest --tests com.karumi.hagu.AndroidSharedTest
+  - ./gradlew clean -Pprofile=ci :android:testDebugUnitTest --tests com.karumi.hagu.CIAndroidSharedTest
+
