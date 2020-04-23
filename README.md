@@ -28,7 +28,7 @@ kotlin.sourceSets["main"].kotlin.srcDirs("$buildDir/generated/kotlin/config")
 
 ### Add configuration file
 
-Use `gradle.properties` file to add the key-value configuration you want like this:
+Hagu by default uses `gradle.properties` file to add the key-value configuration you want like this:
 
 ```groovy
 api_key = "some_api_key"
@@ -44,6 +44,34 @@ import com.karumi.hagu.generated.HaguConfig
 
 println(HaguConfig.API_KEY)  //output: some_api_key
 ```
+
+### Profiles 
+
+You can build your project with different build configuration profiles having different property files, for example:
+
+```
+debug.properties
+release.properties
+ci.properties
+```
+
+To select one of those profiles, you need to add a `profile` parameter with the name of the profile file, for example, `debug`.
+
+```
+./gradlew build -Pprofile=debug
+```
+
+#### Default profile
+
+If you want to select a default profile instead of `gradle.properties` you can add the following Hagu configuration:
+
+```
+hagu {
+    defaultProfile = "debug"
+}
+```
+
+This configuration will use `debug.properties` by default, you can always override this behavior if you add the `profile` parameter. 
 
 License
 -------
