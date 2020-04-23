@@ -1,10 +1,10 @@
 package com.karumi.hagu.plugin
 
 import com.karumi.hagu.plugin.source.sources
+import java.io.File
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType
-import java.io.File
 
 class HaguPlugin : Plugin<Project> {
 
@@ -50,5 +50,4 @@ class HaguPlugin : Plugin<Project> {
       val extension = project.extensions.getByName(HaguExtension.NAME) as HaguExtension
       extension.defaultProfile
     }
-
 }
