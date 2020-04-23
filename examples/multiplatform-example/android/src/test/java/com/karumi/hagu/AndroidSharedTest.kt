@@ -9,7 +9,7 @@ class AndroidSharedTest {
 
   @Test
   fun `hagu configuration file should be accessible from android`() {
-    assertEquals("some_api_k", HaguConfig.API_KEY)
+    assertEquals("some_api_key", HaguConfig.API_KEY)
   }
 
   @Test
