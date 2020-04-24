@@ -21,7 +21,7 @@ script:
   - ./gradlew ktlint test install --info
   - cd examples/kotlin-example
   - ./gradlew test --info
-  - ./gradlew clean test -Pprofile=ci --tests "*CIProfileTest" --info
+  -
   - cd ../multiplatform-example
   - ./gradlew test --info
   - ./gradlew clean :android:testDebugUnitTest -Pprofile=ci --tests "*CIProfileTest" --info
