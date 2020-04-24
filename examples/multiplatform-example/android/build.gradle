@@ -32,8 +32,10 @@ android {
 
     testOptions {
         unitTests.all {
-            useJUnit {
-                exclude '**/*ProfileTest.class'
+            if(!project.hasProperty("profile")) {
+                useJUnit {
+                    exclude '**/*ProfileTest.class'
+                }
             }
         }
     }
