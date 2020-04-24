@@ -29,6 +29,16 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    testOptions {
+        unitTests.all {
+            if(!project.hasProperty("profile")) {
+                useJUnit {
+                    exclude '**/*ProfileTest.class'
+                }
+            }
+        }
+    }
 }
 
 dependencies {
