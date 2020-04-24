@@ -29,6 +29,14 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    testOptions {
+        unitTests.all {
+            useJUnit {
+                exclude '**/*ProfileTest.class'
+            }
+        }
+    }
 }
 
 dependencies {

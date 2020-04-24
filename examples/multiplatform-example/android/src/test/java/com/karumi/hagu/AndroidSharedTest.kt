@@ -4,7 +4,7 @@ import com.karumi.hagu.generated.HaguConfig
 
 import org.junit.Test
 import junit.framework.TestCase.assertEquals
-
+//- ./gradlew clean test --tests "*CIProfileTest" -Pprofile=ci --info
 class AndroidSharedTest {
 
   @Test

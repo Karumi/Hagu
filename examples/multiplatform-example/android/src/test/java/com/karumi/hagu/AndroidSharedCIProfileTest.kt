@@ -5,7 +5,7 @@ import com.karumi.hagu.generated.HaguConfig
 import org.junit.Test
 import junit.framework.TestCase.assertEquals
 
-class CIAndroidSharedTest {
+class AndroidSharedCIProfileTest {
 
   @Test
   fun `hagu configuration file should be accessible from android`() {

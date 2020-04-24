@@ -18,11 +18,11 @@ android:
     - 'google-gdk-license-.+'
 
 script:
-  - ./gradlew :plugin:test ktlint install --info
+  - ./gradlew ktlint test install --info
   - cd examples/kotlin-example
-  - ./gradlew clean test --tests com.karumi.example.DebugConfigFromExtensionTest --info
-  - ./gradlew clean test --tests com.karumi.example.CIProfileTest -Pprofile=ci --info
+  - ./gradlew test --info
+  - ./gradlew clean test -Pprofile=ci --tests "CIProfileTest" --info
   - cd ../multiplatform-example
-  - ./gradlew clean :android:testDebugUnitTest --tests com.karumi.hagu.AndroidSharedTest
-  - ./gradlew clean -Pprofile=ci :android:testDebugUnitTest --tests com.karumi.hagu.CIAndroidSharedTest
+  - ./gradlew test --info
+  - ./gradlew clean :android:testDebugUnitTest -Pprofile=ci --tests "*CIProfileTest" --info
 
